@@ -8,6 +8,8 @@
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
 
 <style>  
 :root{
@@ -33,6 +35,31 @@ body{
 }
 
 /* NAVBAR */
+  .nav-left {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1500;
+}
+
+.nav-logo {
+  width: 48px; /* adjust size as needed */
+  height: auto;
+}
+
+.nav-text {
+  font-family: 'Playfair Display', serif; /* new elegant font */
+  font-weight: 700;                        /* bold */
+  font-size: 1.3rem;                       /* adjust size */
+  color: #333;                             /* keep white */
+  letter-spacing: 0.5px;                   /* optional spacing */
+}
+
+
 .navbar{
   position:fixed;
   top:0;right:0;left:0;
@@ -276,6 +303,10 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
 <!-- NAV -->
 <header class="navbar" id="navbar">
 <nav aria-label="Primary">
+      <div class="nav-left">
+      <img src="kikku.png" alt="Yogra Logo" class="nav-logo">
+      <span class="nav-text">Yogra Naturals</span>
+    </div>
 <div class="menu" id="desktopMenu">
   <a href="#">Home</a>
   <a href="#about">About</a>
@@ -626,3 +657,4 @@ if ('IntersectionObserver' in window) {
 
 </body>
 </html>
+
