@@ -176,4 +176,211 @@ if ('IntersectionObserver' in window) {
     if (window.scrollY > 20) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
+
 })();
+
+// ================= FAQ NATURAL MOUSE HOVER BACKGROUND EFFECT =================
+const faqSection = document.querySelector('.faq-section');
+
+if (faqSection) {
+  faqSection.addEventListener('mousemove', (e) => {
+    const rect = faqSection.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    faqSection.style.setProperty('--x', `${x}%`);
+    faqSection.style.setProperty('--y', `${y}%`);
+  });
+
+  faqSection.addEventListener('mouseleave', () => {
+    faqSection.style.setProperty('--x', '50%');
+    faqSection.style.setProperty('--y', '50%');
+  });
+}
+
+// ================= FAQ TOGGLE FUNCTIONALITY =================
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+
+  question.addEventListener('click', () => {
+    faqItems.forEach(i => {
+      if (i !== item) i.classList.remove('active');
+    });
+
+    item.classList.toggle('active');
+  });
+});
+
+
+// Newsletter
+const form = document.getElementById('newsletter-form');
+const successMsg = document.querySelector('.success-msg');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  successMsg.style.display = 'block';
+  form.reset();
+  setTimeout(() => successMsg.style.display = 'none', 4000);
+});
+
+// Mouse
+let mouse = { x: null, y: null };
+window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+
+// Canvas
+const canvas = document.getElementById('footer-leaves');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  initLeaves();
+  initSparkles();
+  initPollen();
+});
+
+// Leaf class
+class Leaf {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + Math.random() * 100;
+    this.size = Math.random() * 20 + 10;
+    this.speed = Math.random() * 0.5 + 0.5;
+    this.angle = Math.random() * Math.PI * 2;
+    this.angleSpeed = Math.random() * 0.02 - 0.01;
+  }
+  update() {
+    this.y -= this.speed;
+    this.x += Math.sin(this.angle) * 0.5;
+    this.angle += this.angleSpeed;
+
+    if(mouse.x && mouse.y){
+      let dx = this.x - mouse.x;
+      let dy = this.y - mouse.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 100){
+        this.x += dx/50;
+        this.y += dy/50;
+      }
+    }
+
+    if(this.y < -this.size){
+      this.y = canvas.height + this.size;
+      this.x = Math.random() * canvas.width;
+    }
+  }
+  draw(){
+    ctx.fillStyle = 'rgba(163,209,140,0.7)';
+    ctx.beginPath();
+    ctx.ellipse(this.x, this.y, this.size/2, this.size, this.angle, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+// Sparkle class
+class Sparkle {
+  constructor(x=null, y=null){
+    this.x = x || Math.random() * canvas.width;
+    this.y = y || Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedY = Math.random() * 0.2 + 0.1;
+    this.alpha = Math.random() * 0.8 + 0.2;
+  }
+  update(){
+    if(!this.followMouse){
+      this.y -= this.speedY;
+      if(this.y < 0){
+        this.y = canvas.height;
+        this.x = Math.random() * canvas.width;
+        this.alpha = Math.random() * 0.8 + 0.2;
+      }
+    } else {
+      this.alpha -= 0.02;
+      if(this.alpha <= 0) this.toRemove = true;
+    }
+  }
+  draw(){
+    ctx.fillStyle = `rgba(255,223,100,${this.alpha})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+// Pollen class
+class Pollen {
+  constructor(){
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedY = Math.random() * 0.05 + 0.02;
+    this.alpha = Math.random() * 0.3 + 0.1;
+  }
+  update(){
+    this.y -= this.speedY;
+    if(this.y < 0){
+      this.y = canvas.height;
+      this.x = Math.random() * canvas.width;
+      this.alpha = Math.random() * 0.3 + 0.1;
+    }
+  }
+  draw(){
+    ctx.fillStyle = `rgba(255,255,200,${this.alpha})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+// Initialize arrays
+let leavesArray = [];
+let sparklesArray = [];
+let pollenArray = [];
+
+function initLeaves(){
+  leavesArray=[];
+  let count = window.innerWidth <= 768 ? 20 : 40;
+  for(let i=0;i<count;i++) leavesArray.push(new Leaf());
+}
+
+function initSparkles(){
+  sparklesArray=[];
+  let count = window.innerWidth <= 768 ? 15 : 30;
+  for(let i=0;i<count;i++) sparklesArray.push(new Sparkle());
+}
+
+function initPollen(){
+  pollenArray=[];
+  let count = window.innerWidth <= 768 ? 30 : 60;
+  for(let i=0;i<count;i++) pollenArray.push(new Pollen());
+}
+
+// Mouse trailing sparkles
+window.addEventListener('mousemove', e => {
+  for(let i=0;i<2;i++){
+    let s = new Sparkle(e.x + (Math.random()*20-10), e.y + (Math.random()*20-10));
+    s.followMouse = true;
+    sparklesArray.push(s);
+  }
+});
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  leavesArray.forEach(l=>{ l.update(); l.draw(); });
+  pollenArray.forEach(p=>{ p.update(); p.draw(); });
+  sparklesArray.forEach((s,i)=>{
+    s.update();
+    s.draw();
+    if(s.toRemove) sparklesArray.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+initLeaves();
+initSparkles();
+initPollen();
+animate();
