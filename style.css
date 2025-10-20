@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 :root{
   --leaf:#375342;
   --beige:#D6B287;
@@ -638,7 +638,7 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
     height: 18px;
   }
 }
-=======
+
 :root{
   --leaf:#375342;
   --beige:#D6B287;
@@ -923,4 +923,4 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   /* on small screens, make slide a bit narrower so more fits visually */
   .slide{flex:0 0 280px}
 }
->>>>>>> 12eee276729dc5825205acfe4850dcbb4c595fbb
+
