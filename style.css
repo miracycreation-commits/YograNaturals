@@ -1,3 +1,6 @@
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
 
 :root{
   --leaf:#375342;
@@ -1062,4 +1065,3 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   .slide{flex:0 0 280px}
 }
 }
-
