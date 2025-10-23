@@ -263,7 +263,7 @@ main{position:relative;z-index:5}
 }
 
 .about-image img {
-  width: 100%;
+  width: 60%;
   height: 100%;
   object-fit: cover; /* ensures image fills container without stretching */
   display: block;
