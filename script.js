@@ -38,6 +38,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // ================== TESTIMONIALS LOOP SLIDER ==================
+// ================== TESTIMONIALS LOOP SLIDER (AUTO SCROLL + LOOP + PAUSE) ==================
 (function () {
   const track = document.getElementById('sliderTrack');
   if (!track) return;
@@ -49,6 +50,7 @@ if ('IntersectionObserver' in window) {
 
   onReady(() => {
     const viewportWidth = () => Math.max(document.documentElement.clientWidth, window.innerWidth);
+
     const measureTrackWidth = el => {
       const children = Array.from(el.children);
       let total = 0;
@@ -60,6 +62,7 @@ if ('IntersectionObserver' in window) {
       return total;
     };
 
+    // ✅ Duplicate slides until track is wide enough for smooth infinite scroll
     function ensureLoopable() {
       let total = measureTrackWidth(track);
       const minNeeded = viewportWidth() * 2;
@@ -75,43 +78,38 @@ if ('IntersectionObserver' in window) {
 
     let trackWidth = ensureLoopable();
     let loopPoint = trackWidth / 2;
-    if (loopPoint <= 0) return;
-
     const SPEED_PX_PER_SEC = 60;
     let start = null, currentX = 0, raf;
+    let isPaused = false;
+
+    // ✅ Pause when hovered (desktop) or touched (mobile)
+    track.addEventListener('mouseenter', () => { isPaused = true; });
+    track.addEventListener('mouseleave', () => { isPaused = false; });
+    track.addEventListener('touchstart', () => { isPaused = true; });
+    track.addEventListener('touchend', () => { isPaused = false; });
 
     function step(ts) {
       if (!start) start = ts;
       const dt = (ts - start) / 1000;
       start = ts;
 
-      currentX += SPEED_PX_PER_SEC * dt;
-      if (currentX >= loopPoint) currentX -= loopPoint;
+      if (!isPaused) {
+        currentX += SPEED_PX_PER_SEC * dt;
+        if (currentX >= loopPoint) currentX -= loopPoint;
+        track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
+      }
 
-      track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
       raf = requestAnimationFrame(step);
     }
 
     track.style.transform = 'translate3d(0,0,0)';
     track.style.willChange = 'transform';
     raf = requestAnimationFrame(step);
-
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        track.style.transform = 'translate3d(0,0,0)';
-        currentX = 0; start = null;
-        trackWidth = ensureLoopable();
-        loopPoint = trackWidth / 2;
-        raf = requestAnimationFrame(step);
-      }, 120);
-    });
-
-    window.addEventListener('beforeunload', () => { if (raf) cancelAnimationFrame(raf); });
   });
 })();
+
+
+
 
 // ================== NAVBAR BACKGROUND ON SCROLL ==================
 (function () {
@@ -273,6 +271,7 @@ if (aboutCards.length) {
   });
 }
 
+
 // Optional: Reveal on scroll
 const revealCards = document.querySelectorAll('.reveal');
 window.addEventListener('scroll', () => {
@@ -285,3 +284,36 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// ================== CUSTOMER REVIEWS AUTO SCROLL WITH PAUSE ==================
+/*
+document.addEventListener("DOMContentLoaded", function () {
+  let isPaused = false;
+  const slider = document.getElementById('sliderTrack');
+  const toggleBtn = document.getElementById('toggleReviews');
+  let scrollAmount = 1; // speed
+  let scrollInterval;
+
+  if (!slider || !toggleBtn) return;
+
+  function startAutoScroll() {
+    scrollInterval = setInterval(() => {
+      if (!isPaused) {
+        slider.scrollLeft += scrollAmount;
+
+        // loop back to start
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+          slider.scrollLeft = 0;
+        }
+      }
+    }, 20);
+  }
+
+  function toggleScroll() {
+    isPaused = !isPaused;
+    toggleBtn.querySelector('.btn-text').textContent = isPaused ? '▶️ Play' : '⏸ Pause';
+  }
+
+  toggleBtn.addEventListener('click', toggleScroll);
+  startAutoScroll();
+});
+*/
