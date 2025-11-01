@@ -284,36 +284,5 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ================== CUSTOMER REVIEWS AUTO SCROLL WITH PAUSE ==================
-/*
-document.addEventListener("DOMContentLoaded", function () {
-  let isPaused = false;
-  const slider = document.getElementById('sliderTrack');
-  const toggleBtn = document.getElementById('toggleReviews');
-  let scrollAmount = 1; // speed
-  let scrollInterval;
 
-  if (!slider || !toggleBtn) return;
-
-  function startAutoScroll() {
-    scrollInterval = setInterval(() => {
-      if (!isPaused) {
-        slider.scrollLeft += scrollAmount;
-
-        // loop back to start
-        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-          slider.scrollLeft = 0;
-        }
-      }
-    }, 20);
-  }
-
-  function toggleScroll() {
-    isPaused = !isPaused;
-    toggleBtn.querySelector('.btn-text').textContent = isPaused ? '▶️ Play' : '⏸ Pause';
-  }
-
-  toggleBtn.addEventListener('click', toggleScroll);
-  startAutoScroll();
-});
-*/
+  
