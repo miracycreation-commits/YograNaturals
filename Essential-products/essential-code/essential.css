@@ -108,7 +108,7 @@ header p {
 }
 
 .explore-btn:hover {
-  background-color: white;
+  background-color: rgb(183, 21, 21);
   color: #163832;
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(200, 247, 197, 0.6);

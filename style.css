@@ -911,7 +911,7 @@ body{
   color:var(--leaf);
 }
 
-/* HERO */
+/* HERO h */
 .hero-section{
   min-height:100vh;
   display:flex;align-items:center;
