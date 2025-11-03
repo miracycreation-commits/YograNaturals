@@ -12,7 +12,7 @@
 
 body {
   color: white;
-  padding: 40px;
+  padding: 100px;
   background: linear-gradient(to bottom right, rgba(47,53,17,0.85), rgba(4,23,18,0.85));
   background-size: cover;
   background-position: center;
@@ -22,13 +22,16 @@ body {
 
 header {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 10px 0;
+  height: 60px;
+  padding-top: 15px;
 }
 
 header h1 {
   font-size: 2rem;
   color: #fbfbfb;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+
 }
 
 header p {
@@ -433,17 +436,17 @@ body, html {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 18px 0; /* ✅ Balanced height */
   z-index: 1000;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding-bottom: 60px;
 }
+
 
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.95);
@@ -468,13 +471,16 @@ body, html {
   height: 45px;
   object-fit: contain;
   border-radius: 50%;
+  
 }
 
 .nav-text {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #fff;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  
+ 
 }
 
 /* ================== DESKTOP MENU ================== */
