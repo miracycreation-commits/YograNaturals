@@ -532,22 +532,21 @@ body, html {
 
 /* ================== PREMIUM MOBILE MENU (SLIDE FROM RIGHT) ================== */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -280px;
-  height: 100%;
-  width: 260px;
-  background: rgba(20, 20, 20, 0.97);
-  backdrop-filter: blur(10px);
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 40px;
-  gap: 25px;
-  z-index: 2001;
-  transition: right 0.4s ease-in-out;
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  max-width:300px;
+  height:100vh;
+  background:rgba(0, 0, 0, 0.96);
+  backdrop-filter:blur(8px);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:90px 20px 20px 20px;
+  z-index:1300;
+  transition:right .36s ease;
+  overflow-y:auto;
 }
 
 .mobile-menu.active {
