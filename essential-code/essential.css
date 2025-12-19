@@ -343,10 +343,9 @@ body, html {
 }
 
 .footer-social a img {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   margin-right: 10px;
-  filter: brightness(0) invert(1);
   transition: transform 0.3s ease;
 }
 
@@ -636,12 +635,6 @@ body {
 }
 
 
-.footer-social a img {
-  width: 18px;
-  height: 18px;
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease;
-}
 
 .footer-social a:hover img {
   filter: brightness(0) invert(0);
