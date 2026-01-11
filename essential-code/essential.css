@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 /* ==============================
    YOGRA NATURALS — SOLID PERFUMES
@@ -766,3 +770,38 @@ body {
 .about-image img:hover {
   transform: scale(1.05) rotate(1deg);
 }
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+  /* Force ONE product per row */
+  .fragrance-grid {
+    grid-template-columns: 1fr !important;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* Prevent card scaling overflow */
+  .fragrance-card,
+  .fragrance-card:hover {
+    transform: none !important;
+  }
+
+  /* Prevent image zoom overflow */
+  .fragrance-card:hover .imageWrap img {
+    transform: none !important;
+  }
+
+  /* Fix footer glow overflow */
+  .footer-glow {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ensure images never overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
