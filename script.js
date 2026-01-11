@@ -158,16 +158,26 @@ form.addEventListener('submit', e => {
 const canvas = document.getElementById('footer-leaves');
 const seasonBtn = document.getElementById('seasonBtn');
 
-if (canvas && window.innerWidth >= 768) {
+function isMobile() {
+  return window.innerWidth < 768;
+}
 
-  const ctx = canvas.getContext('2d');
-
-  function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+if (canvas && seasonBtn) {
+  function setupFooterCanvas() {
+    if (isMobile()) {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = 180; // fixed height for mobile
+      canvas.style.height = '180px';
+      canvas.style.display = 'block';
+    } else {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      canvas.style.height = '';
+      canvas.style.display = 'block';
+    }
   }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  setupFooterCanvas();
+  window.addEventListener('resize', setupFooterCanvas);
 
   // 🌙 AUTO DAY / NIGHT
   const hour = new Date().getHours();
@@ -402,6 +412,25 @@ if (collectionsLink) {
     if (footerLogo) {
       footerLogo.scrollIntoView({ behavior: 'smooth' });
     }
+  });
+}
+
+// Smooth scroll for mobile menu links to footer
+const mobileMenu = document.getElementById('mobileMenu');
+if (mobileMenu) {
+  const mobileFooterLinks = mobileMenu.querySelectorAll('a[href="#footer-logo"], a[href="#footer-contact"], a[href="#home"]');
+  mobileFooterLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const footerLogo = document.getElementById('footer-logo');
+      if (footerLogo) {
+        footerLogo.scrollIntoView({ behavior: 'smooth' });
+      }
+      // Hide mobile menu after click
+      mobileMenu.classList.remove('show');
+      const hamburger = document.getElementById('hamburger');
+      if (hamburger) hamburger.classList.remove('active');
+    });
   });
 }
 
