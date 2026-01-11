@@ -26,11 +26,11 @@
       <span class="nav-text">Yogra Naturals</span>
     </div>
 <div class="menu" id="desktopMenu">
-  <a href="#">Home</a>
+  <a href="#footer-logo">Home</a>
   <a href="#about">About</a>
   <a href="#products">Collections</a>
   <a href="PrivacyPolicy/privacy-policy.html">PrivacyPolicy</a>
-  <a href="#contact">Contact</a>
+  <a href="#footer-logo">Contact</a>
 </div>
 <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
   <div></div><div></div><div></div>
@@ -45,7 +45,7 @@
   <a href="#about">About</a>
   <a href="#products">Collections</a>
   <a href="PrivacyPolicy/privacy-policy.html">PrivacyPolicy</a>
-  <a href="#contact">Contact</a>
+  <a href="#footer-contact">Contact</a>
 </nav>
 
 <!-- HERO -->
@@ -266,11 +266,72 @@ Through strict quality control, sustainable sourcing, and continuous technologic
           <div class="rating">★★★★★</div>
         </div>
       </div>
+
+      <div class="slide reveal">
+        <p>"The essential oils are pure and the fragrance lasts long. Highly recommended!"</p>
+        <div class="testimonial-header">
+          <div style="display:flex;align-items:center">
+            <img class="customer-photo" src="customer1.jpg" alt="Priya">
+            <div style="margin-left:10px"><div class="who">Priya</div></div>
+          </div>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="slide reveal">
+        <p>"Fast delivery and beautiful packaging. The incense sticks are my favorite!"</p>
+        <div class="testimonial-header">
+          <div style="display:flex;align-items:center">
+            <img class="customer-photo" src="customer2.jpg" alt="Amit">
+            <div style="margin-left:10px"><div class="who">Amit</div></div>
+          </div>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="slide reveal">
+        <p>"I gifted the wellness kit to my mom and she loved it. Will order again!"</p>
+        <div class="testimonial-header">
+          <div style="display:flex;align-items:center">
+            <img class="customer-photo" src="customer3.jpg" alt="Neha">
+            <div style="margin-left:10px"><div class="who">Neha</div></div>
+          </div>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
     </div>
   </div>
        
 
+<!-- Add Review Form (User Provided) -->
+<section class="home-review-section">
+    <h2 class="review-title">Customer Reviews</h2>
 
+    <form class="review-form-horizontal">
+        <input type="text" placeholder="Your Name" required>
+
+        <textarea placeholder="Your Review" required></textarea>
+
+        <div class="stars">
+            <input type="radio" name="rate" id="star5">
+            <label for="star5">★</label>
+
+            <input type="radio" name="rate" id="star4">
+            <label for="star4">★</label>
+
+            <input type="radio" name="rate" id="star3">
+            <label for="star3">★</label>
+
+            <input type="radio" name="rate" id="star2">
+            <label for="star2">★</label>
+
+            <input type="radio" name="rate" id="star1">
+            <label for="star1">★</label>
+        </div>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</section>
 </section>
 
 <!-- CTA -->
@@ -342,6 +403,8 @@ Through strict quality control, sustainable sourcing, and continuous technologic
   <div class="footer-glow"></div>
 
   <div class="footer-container">
+
+    <!-- Quick Links -->
     <div class="footer-links">
       <h3>Quick Links</h3>
       <ul>
@@ -349,13 +412,16 @@ Through strict quality control, sustainable sourcing, and continuous technologic
         <li><a href="#products">Products</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="PrivacyPolicy/privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>
 
+    <!-- Contact -->
     <div class="footer-contact">
       <h3>Contact Us</h3>
-      <p>Email: support@yogranaturals.com</p>
-      <p>Phone: +91 1234 567 890</p>
+      <p>Email: <a href="mailto:support@yogranaturals.com">support@yogranaturals.com </a></p>
+      <p>Phone:   +91 1234 567 890</p>
+
       <div class="footer-social">
         <a href="#"><img src="facebook.svg" alt="Facebook"></a>
         <a href="#"><img src="twitter.svg" alt="Twitter"></a>
@@ -364,23 +430,30 @@ Through strict quality control, sustainable sourcing, and continuous technologic
       </div>
     </div>
 
+    <!-- Newsletter -->
     <div class="footer-newsletter">
-      <h3>Subscribe to our Newsletter</h3>
+      <h3>Newsletter</h3>
       <form id="newsletter-form">
         <input type="email" placeholder="Enter your email" required>
         <button type="submit">Subscribe</button>
       </form>
-      <p class="success-msg">Thank you for subscribing!</p>
+      <p class="success-msg" id="newsletterMsg">Thank you for subscribing!</p>
     </div>
+
   </div>
 
-  <div class="footer-logo">
+  <div class="footer-logo" id="footer-logo">
     <h2>Yogra Naturals</h2>
   </div>
 
   <div class="footer-bottom">
-    <p>@CopyRight.MyracyCreation</p>
+    <p>© 2026 MyracyCreation. All Rights Reserved.</p>
   </div>
+  <!-- Season Toggle -->
+<div class="season-toggle">
+  <button id="seasonBtn">🌧️ Monsoon</button>
+</div>
+
 </footer>
 
 
