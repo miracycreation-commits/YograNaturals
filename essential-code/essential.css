@@ -737,4 +737,32 @@ body {
 
 
 
+.about-image {
+    flex: 1 1 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 20px 20px 0;
+    min-height: 220px;
+    padding: 16px;
+    background: transparent;
+  }
 
+.about-image img {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  max-height: 210px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(55,83,66,0.13), 0 1.5px 6px rgba(55,83,66,0.08);
+}
+
+.about-image img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
