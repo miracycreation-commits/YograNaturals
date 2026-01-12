@@ -261,7 +261,7 @@ header p {
   padding: 60px 20px 40px;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, #6f7286, #000000);
+  background: transparent;
   min-height: 380px;       /* ⬅ IMPORTANT for canvas height */
 }
 
@@ -385,7 +385,7 @@ header p {
 .footer-social img {
   width: 22px;
   height: 22px;
-  filter: invert(1);
+  
   transition: 0.3s ease;
 }
 
@@ -816,3 +816,28 @@ body {
   height: 100%;
 }
 
+/* ===== FOOTER LOGO WITH IMAGE ===== */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;               /* space between logo & text */
+  margin-top: 30px;
+}
+
+.footer-logo-img {
+  width: 40px;             /* adjust if needed */
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;          /* prevents shrinking */
+}
+@media (max-width: 480px) {
+  .footer-logo-img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer-logo h2 {
+    font-size: 1.6rem;
+  }
+}
