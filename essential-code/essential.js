@@ -21,10 +21,16 @@ if (canvas && seasonBtn) {
 
   const ctx = canvas.getContext('2d');
 
-  function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
+ function resizeCanvas() {
+  const footer = canvas.closest('.footer');
+  if (!footer) return;
+
+  canvas.width = footer.clientWidth;
+  canvas.height = footer.scrollHeight;
+}
+window.addEventListener('load', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
+
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
   // 📱 Detect mobile
