@@ -258,13 +258,11 @@ header p {
 .footer {
   position: relative;
   overflow: hidden;
-  padding: 48px 20px 32px;
+  padding: 60px 20px 40px;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  background: transparent;
-  min-height: 220px;
-  margin-top: auto;
-  transition: none;
+  background: linear-gradient(135deg, #6f7286, #000000);
+  min-height: 380px;       /* ⬅ IMPORTANT for canvas height */
 }
 
 /* Canvas */
@@ -379,15 +377,15 @@ header p {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(164, 229, 12, 0.03);
+  background: rgba(255,255,255,0.08);
   transition: all 0.3s ease;
-  box-shadow: 0 0 6px rgba(97, 249, 3, 0.055);
+  box-shadow: 0 0 6px rgba(255,255,255,0.15);
 }
 
 .footer-social img {
   width: 22px;
   height: 22px;
- 
+  filter: invert(1);
   transition: 0.3s ease;
 }
 
@@ -533,6 +531,7 @@ header p {
 .season-toggle button:hover {
   background: rgba(255,255,255,0.35);
 }
+
 /* ================== HEADER & NAVBAR ================== */
 /* ================== HEADER & NAVBAR ================== */
 .navbar {
@@ -802,6 +801,16 @@ body {
   img {
     max-width: 100%;
     height: auto;
+  }
+}
+/* ===== FIX FOOTER CANVAS ON MOBILE ===== */
+@media (max-width: 768px) {
+  #footer-leaves {
+    height: 180px;          /* must match JS */
+  }
+
+  .footer {
+    min-height: 260px;     /* ensures canvas space */
   }
 }
 

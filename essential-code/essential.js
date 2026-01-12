@@ -7,15 +7,17 @@ if (form && successMsg) {
     e.preventDefault();
     successMsg.style.display = 'block';
     form.reset();
-    setTimeout(() => successMsg.style.display = 'none', 4000);
+    setTimeout(() => {
+      successMsg.style.display = 'none';
+    }, 4000);
   });
 }
 
-// ================== FOOTER CANVAS (FINAL WORKING VERSION) ==================
+// ================== FOOTER CANVAS ==================
 const canvas = document.getElementById('footer-leaves');
 const seasonBtn = document.getElementById('seasonBtn');
 
-if (canvas && window.innerWidth >= 768) {
+if (canvas && seasonBtn) {
 
   const ctx = canvas.getContext('2d');
 
@@ -25,6 +27,13 @@ if (canvas && window.innerWidth >= 768) {
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
+  // 📱 Detect mobile
+const isMobile = window.innerWidth < 768;
+
+// 🎛 Performance tuning
+const RAIN_COUNT = isMobile ? 40 : 90;
+const LEAF_COUNT = isMobile ? 20 : 35;
+
 
   // 🌙 AUTO DAY / NIGHT
   const hour = new Date().getHours();
@@ -34,25 +43,16 @@ if (canvas && window.innerWidth >= 768) {
   let season = 'monsoon';
   seasonBtn.textContent = '🌧️ Monsoon';
 
-  seasonBtn.onclick = () => {
+  seasonBtn.addEventListener('click', () => {
     season = season === 'monsoon' ? 'autumn' : 'monsoon';
     seasonBtn.textContent = season === 'monsoon' ? '🌧️ Monsoon' : '🍂 Autumn';
     init();
-  };
+  });
 
   // 🍃 AUTUMN COLORS
   const leafColors = isNight
-    ? [
-        'rgba(150,100,50,0.9)',
-        'rgba(170,120,60,0.9)',
-        'rgba(130,80,40,0.9)'
-      ]
-    : [
-        'rgba(200,150,80,0.9)',
-        'rgba(180,120,60,0.9)',
-        'rgba(220,170,90,0.9)',
-        'rgba(160,100,50,0.9)'
-      ];
+    ? ['rgba(150,100,50,0.9)', 'rgba(170,120,60,0.9)', 'rgba(130,80,40,0.9)']
+    : ['rgba(200,150,80,0.9)', 'rgba(180,120,60,0.9)', 'rgba(220,170,90,0.9)', 'rgba(160,100,50,0.9)'];
 
   // 🌬️ WIND
   let wind = 0.5;
@@ -60,23 +60,22 @@ if (canvas && window.innerWidth >= 768) {
     wind = Math.random() * 1.2 - 0.6;
   }, 5000);
 
-  // 🖱️ MOUSE TRACKING (FOR LEAF REPEL)
- // 🖱️ MOUSE TRACKING (ATTACHED TO FOOTER, NOT CANVAS)
-let mouse = { x: null, y: null };
+  // 🖱️ MOUSE TRACKING
+  const mouse = { x: null, y: null };
+  const footer = canvas.closest('.footer');
 
-const footer = canvas.closest('.footer');
+  if (footer) {
+    footer.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
 
-footer.addEventListener('mousemove', e => {
-  const rect = canvas.getBoundingClientRect();
-  mouse.x = e.clientX - rect.left;
-  mouse.y = e.clientY - rect.top;
-});
-
-footer.addEventListener('mouseleave', () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
+    footer.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+  }
 
   // ⛈️ LIGHTNING
   let lightningAlpha = 0;
@@ -86,7 +85,6 @@ footer.addEventListener('mouseleave', () => {
     }
   }
 
-  // ---------- PARTICLES ----------
   let rain = [];
   let leaves = [];
 
@@ -104,9 +102,7 @@ footer.addEventListener('mouseleave', () => {
       if (this.y > canvas.height) this.reset();
     }
     draw() {
-      ctx.strokeStyle = isNight
-        ? 'rgba(160,200,255,0.5)'
-        : 'rgba(120,180,240,0.6)';
+      ctx.strokeStyle = isNight ? 'rgba(160,200,255,0.5)' : 'rgba(120,180,240,0.6)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
@@ -125,36 +121,27 @@ footer.addEventListener('mouseleave', () => {
       this.angle = Math.random() * Math.PI * 2;
       this.color = leafColors[Math.floor(Math.random() * leafColors.length)];
     }
-
     update() {
-      // Normal motion
       this.y -= this.speed;
       this.x += Math.sin(this.angle) + wind;
       this.angle += 0.01;
 
-      // 🍃 MOUSE REPEL EFFECT
       if (mouse.x !== null && mouse.y !== null) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-
         const radius = 130;
-        if (dist < radius && dist > 0.5) {
+        if (dist < radius && dist > 1) {
           const force = (radius - dist) / radius;
           this.x += (dx / dist) * force * 7;
           this.y += (dy / dist) * force * 7;
         }
       }
 
-      if (
-        this.y < -this.size ||
-        this.x < -100 ||
-        this.x > canvas.width + 100
-      ) {
+      if (this.y < -this.size || this.x < -100 || this.x > canvas.width + 100) {
         this.reset();
       }
     }
-
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
@@ -162,26 +149,16 @@ footer.addEventListener('mouseleave', () => {
       ctx.fillStyle = this.color;
       ctx.beginPath();
       ctx.moveTo(0, -this.size);
-      ctx.bezierCurveTo(
-        this.size * 0.6, -this.size * 0.4,
-        this.size * 0.6,  this.size * 0.6,
-        0, this.size
-      );
-      ctx.bezierCurveTo(
-        -this.size * 0.6,  this.size * 0.6,
-        -this.size * 0.6, -this.size * 0.4,
-        0, -this.size
-      );
+      ctx.bezierCurveTo(this.size * 0.6, -this.size * 0.4, this.size * 0.6, this.size * 0.6, 0, this.size);
+      ctx.bezierCurveTo(-this.size * 0.6, this.size * 0.6, -this.size * 0.6, -this.size * 0.4, 0, -this.size);
       ctx.fill();
       ctx.restore();
     }
   }
 
-  // ---------- INIT ----------
   function init() {
     rain = [];
     leaves = [];
-
     if (season === 'monsoon') {
       for (let i = 0; i < 90; i++) rain.push(new RainDrop());
     } else {
@@ -190,15 +167,12 @@ footer.addEventListener('mouseleave', () => {
   }
   init();
 
-  // ---------- ANIMATE ----------
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     triggerLightning();
 
     if (season === 'monsoon') {
       rain.forEach(r => { r.update(); r.draw(); });
-
       if (lightningAlpha > 0) {
         ctx.fillStyle = `rgba(255,255,255,${lightningAlpha})`;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -207,24 +181,27 @@ footer.addEventListener('mouseleave', () => {
     } else {
       leaves.forEach(l => { l.update(); l.draw(); });
     }
-
     requestAnimationFrame(animate);
   }
-
   animate();
 }
+
 // ================== NAVBAR & MOBILE MENU ==================
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const closeMenu = document.getElementById('closeMenu');
 const navbar = document.getElementById('navbar');
 
-// Create overlay for dim background
-let overlay = document.createElement('div');
-overlay.classList.add('menu-overlay');
+const overlay = document.createElement('div');
+overlay.className = 'menu-overlay';
 document.body.appendChild(overlay);
 
-// ✅ Toggle mobile menu
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  overlay.classList.remove('show');
+}
+
 if (hamburger && mobileMenu) {
   hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
@@ -233,26 +210,15 @@ if (hamburger && mobileMenu) {
   });
 }
 
-// ✅ Close button or overlay click
-if (closeMenu) {
-  closeMenu.addEventListener('click', closeMobileMenu);
-}
+if (closeMenu) closeMenu.addEventListener('click', closeMobileMenu);
 overlay.addEventListener('click', closeMobileMenu);
 
-// ✅ Close when a link is clicked
 if (mobileMenu) {
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
   });
 }
 
-function closeMobileMenu() {
-  mobileMenu.classList.remove('active');
-  hamburger.classList.remove('active');
-  overlay.classList.remove('show');
-}
-
-// ✅ Navbar background on scroll
 window.addEventListener('scroll', () => {
   if (navbar) {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
