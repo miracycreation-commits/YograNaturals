@@ -173,18 +173,27 @@ if (canvas && seasonBtn) {
 
   const ctx = canvas.getContext('2d');
 
- function resizeCanvas() {
-  const footer = canvas.closest('.footer');
-  if (!footer) return;
+ // ✅ Resize canvas to FULL footer height
+  function resizeCanvas() {
+    const footer = canvas.closest('.footer');
+    if (!footer) return;
 
-  canvas.width = footer.clientWidth;
-  canvas.height = footer.scrollHeight;
-}
-window.addEventListener('load', resizeCanvas);
-window.addEventListener('resize', resizeCanvas);
+    canvas.width = footer.clientWidth;
+    canvas.height = footer.scrollHeight;
+  }
 
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  // ✅ Force resize after footer fully renders (mobile fix)
+  function forceResize() {
+    resizeCanvas();
+    requestAnimationFrame(resizeCanvas);
+    setTimeout(resizeCanvas, 300);
+    setTimeout(resizeCanvas, 800);
+  }
+
+  window.addEventListener('load', forceResize);
+  window.addEventListener('resize', forceResize);
+  window.addEventListener('orientationchange', forceResize)
+
   // 📱 Detect mobile
 const isMobile = window.innerWidth < 768;
 

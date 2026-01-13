@@ -1003,3 +1003,19 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   width: 100%;
   height: 100%;
 }
+
+/* === FINAL FOOTER CANVAS FIX (MOBILE + DESKTOP) === */
+.footer {
+  position: relative;
+  overflow: hidden;
+  min-height: auto; /* allow footer to grow naturally on mobile */
+}
+
+#footer-leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
