@@ -27,14 +27,24 @@ if (mobileMenu && hamburger) {
 }
 
 // ================== REVEAL ANIMATION ==================
+// ================== REVEAL ANIMATION (FIXED) ==================
 const revealEls = document.querySelectorAll('.reveal');
 
 if ('IntersectionObserver' in window) {
-  const obs = new IntersectionObserver(entries => {
+ const obs = new IntersectionObserver(
+  (entries) => {
     entries.forEach(entry => {
-      entry.target.classList.toggle('show', entry.isIntersecting);
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
     });
-  }, { threshold: 0.12 });
+  },
+  {
+    rootMargin: '200px 0px', // start earlier
+    threshold: 0.01
+  }
+);
+
 
   revealEls.forEach(el => {
     el.classList.remove('show');
@@ -43,6 +53,7 @@ if ('IntersectionObserver' in window) {
 } else {
   revealEls.forEach(el => el.classList.add('show'));
 }
+
 
 // ================== TESTIMONIALS LOOP SLIDER ==================
 (function () {
