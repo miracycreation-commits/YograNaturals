@@ -28,23 +28,32 @@ if (mobileMenu && hamburger) {
 
 // ================== REVEAL ANIMATION ==================
 // ================== REVEAL ANIMATION (FIXED) ==================
+// ================== REVEAL ANIMATION (DESKTOP REPLAY FIX) ==================
 const revealEls = document.querySelectorAll('.reveal');
 
 if ('IntersectionObserver' in window) {
- const obs = new IntersectionObserver(
-  (entries) => {
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+
+      // DESKTOP: replay animation every time
+      if (window.innerWidth > 768) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      }
+
+      // MOBILE: show once, no replay (smooth)
+      else {
         entry.target.classList.add('show');
       }
-    });
-  },
-  {
-    rootMargin: '200px 0px', // start earlier
-    threshold: 0.01
-  }
-);
 
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+  });
 
   revealEls.forEach(el => {
     el.classList.remove('show');
