@@ -1019,3 +1019,34 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   height: 100%;
   pointer-events: none;
 }
+
+/* ================= MOBILE SCROLL LAG FIX (FINAL) ================= */
+
+/* 1️⃣ Disable fixed background on mobile (MAJOR FIX) */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
+/* 2️⃣ Reduce heavy reveal animations on mobile */
+@media (max-width: 768px) {
+  .reveal {
+    transform: none !important;
+    transition: opacity 0.4s ease !important;
+  }
+}
+
+/* 3️⃣ Optimize product cards for smooth scrolling */
+@media (max-width: 768px) {
+  .card {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  }
+}
+
+/* 4️⃣ Hint browser for better scroll performance */
+.section,
+.about-section,
+.collections {
+  will-change: transform;
+}
