@@ -230,3 +230,29 @@ window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }
 });
+
+
+// ================== MOBILE PRODUCT POPUP ==================
+if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-popup-overlay';
+  document.body.appendChild(overlay);
+
+  document.querySelectorAll('.fragrance-card').forEach(card => {
+    card.addEventListener('click', () => {
+      overlay.innerHTML = ''; // clear previous
+      const popupCard = card.cloneNode(true);
+      popupCard.classList.add('mobile-popup-card');
+      overlay.appendChild(popupCard);
+      overlay.classList.add('show');
+    });
+  });
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) {
+      overlay.classList.remove('show');
+      overlay.innerHTML = '';
+    }
+  });
+}
