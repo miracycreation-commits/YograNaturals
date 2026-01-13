@@ -117,7 +117,7 @@ body{
   font-family: "Poppins", sans-serif;
   background-image: url('about-img.jpg');
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center;
   color:var(--muted);
   -webkit-font-smoothing:antialiased;
@@ -426,7 +426,15 @@ main{position:relative;z-index:5}
 .collections h2{color:var(--leaf);margin-bottom:18px}
 .grid{display:grid;grid-template-columns: repeat(3,1fr);gap:20px;}
 .card{background:var(--ivory);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow: 6px 8px 20px rgba(0,0,0,0.12);transition:transform .28s ease, box-shadow .28s;}
-.card img{width:100%;height:240px;object-fit:cover;border-radius:8px}
+/* ✅ FINAL & CORRECT COLLECTION IMAGE RULE */
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* reserves space before image loads */
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
 .card h3{margin:0;color:var(--leaf);font-size:1.05rem}
 .card p{font-size:.9rem;color:var(--muted);font-weight:300}
 .card .shop{margin-top:auto;text-align:right}
@@ -509,12 +517,52 @@ main{position:relative;z-index:5}
 footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
 
 /* Reveal Animations */
-.reveal{opacity:0;transform:translateY(60px) scale(0.95);transition:all .9s cubic-bezier(.19,1,.22,1)}
-.reveal.show{opacity:1;transform:translateY(0) scale(1)}
-.fade-left{transform:translateX(-80px);opacity:0}
-.fade-right{transform:translateX(80px);opacity:0}
-.zoom-in{transform:scale(0.8);opacity:0}
-.fade-left.show,.fade-right.show,.zoom-in.show{transform:none;opacity:1;transition:all .9s cubic-bezier(.19,1,.22,1)}
+/* ===== Optimized Reveal Animations (NO MOBILE LAG) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional reveals */
+.fade-left {
+  transform: translateX(-40px);
+  opacity: 0;
+}
+
+.fade-right {
+  transform: translateX(40px);
+  opacity: 0;
+}
+
+.zoom-in {
+  transform: scale(0.95);
+  opacity: 0;
+}
+
+.fade-left.show,
+.fade-right.show,
+.zoom-in.show {
+  transform: none;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 🚑 Mobile safety: disable transform stacking */
+@media (max-width: 768px) {
+  .fade-left,
+  .fade-right,
+  .zoom-in {
+    transform: none !important;
+  }
+}
+
 
 /* Responsive */
 @media (max-width:1100px){.grid{grid-template-columns: repeat(2,1fr)}}
@@ -1044,22 +1092,8 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   }
 }
 
-/* 4️⃣ Hint browser for better scroll performance */
-.section,
-.about-section,
-.collections {
-  will-change: transform;
-}
 
 /* ================= MOBILE COLLECTION & ABOUT FIX ================= */
-
-/* 1️⃣ Reserve image space to prevent late pop-in */
-.card img {
-  aspect-ratio: 4 / 3;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
 
 /* 2️⃣ Disable heavy reveal animation on cards (mobile only) */
 @media (max-width: 768px) {
@@ -1073,5 +1107,13 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
 @media (max-width: 768px) {
   .reveal {
     transition: opacity 0.3s ease !important;
+  }
+}
+@media (max-width: 768px) {
+  #products .reveal,
+  #products .card.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
