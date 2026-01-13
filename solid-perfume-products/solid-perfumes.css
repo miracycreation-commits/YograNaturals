@@ -248,16 +248,7 @@ header p {
 }
 
 /* ================= FOOTER ================= */
-/* ================== FOOTER ================== */
-.footer {
-  position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, #0b3d2e, #145a3d);
-  color: #fff;
-  padding: 60px 5%;
-  overflow: hidden;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Make the footer fully stretch to left-right edges */
 body, html {
@@ -266,148 +257,206 @@ body, html {
   width: 100%;
   overflow-x: hidden;
 }
-
-/* Footer background effects */
-.footer canvas#footer-leaves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+/* ================= FOOTER ================= */
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 20px 40px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: transparent;
+  min-height: 380px;       /* ⬅ IMPORTANT for canvas height */
 }
 
+/* Canvas */
+#footer-leaves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;              /* ⬅ bring canvas above background */
+  pointer-events: none;
+}
+
+
+/* Glow */
 .footer-glow {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent 60%);
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,223,180,0.3) 0%, transparent 70%);
   z-index: 0;
+  animation: glowShiftColor 60s linear infinite alternate;
 }
 
-/* Footer layout */
+@keyframes glowShiftColor {
+  0%   { background: radial-gradient(circle, rgba(255,223,180,0.3), transparent 70%); }
+  25%  { background: radial-gradient(circle, rgba(255,200,150,0.3), transparent 70%); }
+  50%  { background: radial-gradient(circle, rgba(255,240,180,0.3), transparent 70%); }
+  75%  { background: radial-gradient(circle, rgba(255,210,170,0.3), transparent 70%); }
+  100% { background: radial-gradient(circle, rgba(255,223,180,0.3), transparent 70%); }
+}
+
+/* Layout */
 .footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
   position: relative;
   z-index: 1;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
 }
 
-/* Columns inside footer */
-.footer-links,
-.footer-contact,
-.footer-newsletter {
-  flex: 1;
-  min-width: 250px;
-}
-
+/* Headings */
 .footer-links h3,
 .footer-contact h3,
 .footer-newsletter h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: #ffd48a;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #a3d18c;
+  letter-spacing: 0.5px;
 }
 
+/* Links */
 .footer-links ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.footer-links ul li {
-  margin-bottom: 8px;
+.footer-links li {
+  margin: 12px 0;
 }
 
-.footer-links ul li a {
-  color: #fff;
+.footer-links a {
+  color: #ccc;
   text-decoration: none;
-  transition: color 0.3s ease;
+  position: relative;
+  transition: 0.3s ease;
 }
 
-.footer-links ul li a:hover {
-  color: #ffd48a;
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #a3d18c;
+  transition: width 0.3s ease;
 }
 
+.footer-links a:hover {
+  color: #a3d18c;
+  letter-spacing: 0.5px;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* Contact */
 .footer-contact p {
-  margin: 6px 0;
+  margin: 8px 0;
+  color: #ccc;
   font-size: 0.95rem;
 }
 
-.footer-social a img {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s ease;
+/* Social Icons */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
 }
 
-.footer-social a img:hover {
-  transform: scale(1.2);
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(255,255,255,0.15);
 }
 
-/* Newsletter box */
+.footer-social img {
+  width: 22px;
+  height: 22px;
+  
+  transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: rgba(163,209,140,0.25);
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(163,209,140,0.7);
+}
+
+/* Newsletter */
+.footer-newsletter form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
 .footer-newsletter input {
-  padding: 10px;
-  width: 70%;
+  flex: 1;
+  min-width: 180px;
+  padding: 12px 15px;
+  border-radius: 50px 0 0 50px;
   border: none;
-  border-radius: 4px;
-  margin-right: 10px;
   outline: none;
 }
 
 .footer-newsletter button {
-  background: #ffd48a;
+  padding: 12px 20px;
+  border-radius: 0 50px 50px 0;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  color: #0b3d2e;
-  font-weight: bold;
+  background: #a3d18c;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
 .footer-newsletter button:hover {
-  background: #fff;
-  color: #145a3d;
+  background: #8ac176;
 }
 
-.footer-newsletter .success-msg {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #90ee90;
+/* Success */
+.success-msg {
   display: none;
+  margin-top: 8px;
+  color: #00ff7f;
+  font-weight: 500;
 }
 
-/* Logo and bottom strip */
+/* Logo */
 .footer-logo {
   text-align: center;
-  margin-top: 50px;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-logo h2 {
-  font-size: 2rem;
-  color: #ffd48a;
-  margin: 0;
-}
-
-.footer-bottom {
-  background: rgba(0, 0, 0, 0.3);
-  text-align: center;
-  padding: 10px 0;
   margin-top: 30px;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  position: relative;
-  z-index: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a3d18c;
+  text-shadow: 0 0 10px rgba(163,209,140,0.7);
+  letter-spacing: 1px;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.footer-bottom:hover {
+  color: #a3d18c;
 }
 
 /* Responsive */
@@ -418,14 +467,119 @@ body, html {
     text-align: center;
   }
 
-  .footer-newsletter input {
-    width: 100%;
-    margin-bottom: 10px;
+  .footer-newsletter form {
+    flex-direction: column;
   }
 
+  .footer-newsletter input,
   .footer-newsletter button {
     width: 100%;
+    border-radius: 50px;
+    margin: 5px 0;
   }
+
+  .footer-social a {
+    width: 35px;
+    height: 35px;
+  }
+
+  .footer-social img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Season Toggle Button */
+.season-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 5;
+}
+
+.season-toggle button {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.season-toggle button:hover {
+  background: rgba(255,255,255,0.3);
+}
+.season-toggle {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 10;
+}
+
+.season-toggle button {
+  padding: 8px 14px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.season-toggle button:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* === SOCIAL MEDIA SECTION FIX === */
+.footer-social {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.footer-social a {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Fix footer glow overflow */
+  .footer-glow {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ensure images never overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+/* ===== FIX FOOTER CANVAS ON MOBILE ===== */
+/* ===== FOOTER CANVAS FULL HEIGHT FIX (ALL DEVICES) ===== */
+.footer {
+  position: relative;
+}
+
+#footer-leaves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 /* ================== HEADER & NAVBAR ================== */
 /* ================== HEADER & NAVBAR ================== */
@@ -469,7 +623,7 @@ body, html {
   height: 45px;
   object-fit: contain;
   border-radius: 50%;
-  
+  margin-right: 10px;
 }
 
 .nav-text {
@@ -611,29 +765,4 @@ body {
   margin-top: 40px;
 }
 
-/* === SOCIAL MEDIA SECTION FIX === */
-.footer-social {
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-}
 
-.footer-social a {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px;
-  transition: 0.3s ease;
-}
-
-.footer-social a:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-
-.footer-social a:hover img {
-  filter: brightness(0) invert(0);
-}
