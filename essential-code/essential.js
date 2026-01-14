@@ -7,12 +7,11 @@ if (form && successMsg) {
     e.preventDefault();
     successMsg.style.display = 'block';
     form.reset();
-    setTimeout(() => {
-      successMsg.style.display = 'none';
-    }, 4000);
+    setTimeout(() => successMsg.style.display = 'none', 4000);
   });
 }
 
+// ================== CANVAS ANIMATION (LEAVES, SPARKLES, POLLEN) ==================
 // ================== FOOTER CANVAS ==================
 const canvas = document.getElementById('footer-leaves');
 const seasonBtn = document.getElementById('seasonBtn');
@@ -191,45 +190,48 @@ const LEAF_COUNT = isMobile ? 20 : 35;
   }
   animate();
 }
+// ================== NAVBAR & MOBILE MENU ==================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+const navbar = document.getElementById('navbar');
 
-// ================== MOBILE PRODUCT POPUP ==================
-document.addEventListener('DOMContentLoaded', () => {
+// Create overlay for dim background
+let overlay = document.createElement('div');
+overlay.classList.add('menu-overlay');
+document.body.appendChild(overlay);
 
-  if (window.innerWidth > 768) return;
-
-  const popupOverlay = document.createElement('div');
-  popupOverlay.className = 'mobile-popup-overlay';
-  document.body.appendChild(popupOverlay);
-
-  document.querySelectorAll('.fragrance-card').forEach(card => {
-
-    card.addEventListener('touchstart', e => {
-
-      // ❌ Ignore taps on links & buttons
-      if (e.target.closest('a, button')) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      popupOverlay.innerHTML = '';
-
-      const popupCard = card.cloneNode(true);
-      popupCard.classList.add('mobile-popup-card');
-
-      popupOverlay.appendChild(popupCard);
-      popupOverlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-
-    }, { passive: false });
-
+// ✅ Toggle mobile menu
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('show');
   });
+}
 
-  popupOverlay.addEventListener('touchstart', e => {
-    if (e.target === popupOverlay) {
-      popupOverlay.classList.remove('show');
-      popupOverlay.innerHTML = '';
-      document.body.style.overflow = '';
-    }
+// ✅ Close button or overlay click
+if (closeMenu) {
+  closeMenu.addEventListener('click', closeMobileMenu);
+}
+overlay.addEventListener('click', closeMobileMenu);
+
+// ✅ Close when a link is clicked
+if (mobileMenu) {
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
   });
+}
 
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  overlay.classList.remove('show');
+}
+
+// ✅ Navbar background on scroll
+window.addEventListener('scroll', () => {
+  if (navbar) {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }
 });
