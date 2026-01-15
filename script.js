@@ -386,3 +386,5 @@ document.querySelectorAll('.about-card').forEach(card => {
     card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
   });
 });
+
+
