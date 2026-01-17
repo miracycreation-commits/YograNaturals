@@ -196,45 +196,109 @@ body{
 
 /* Mobile Menu Styles */
 .mobile-menu{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:100%;
-  max-width:300px;
-  height:100vh;
-  background:rgba(255,255,255,0.96);
-  backdrop-filter:blur(8px);
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  padding:90px 20px 20px 20px;
-  z-index:1300;
-  transition:right .36s ease;
-  overflow-y:auto;
+  position: fixed;
+  top: 0;
+  right: -100%;
+
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+
+  /* premium glass + gradient */
+  background: linear-gradient(
+    160deg,
+    rgba(167, 175, 159, 0.96),
+    rgba(140, 148, 132, 0.96)
+  );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 100px 26px 26px;
+
+  z-index: 1300;
+
+  /* luxury depth */
+  box-shadow: -12px 0 40px rgba(0,0,0,0.25);
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+
+  transition:
+    right 0.45s cubic-bezier(.4,0,.2,1);
+
+  overflow-y: auto;
 }
+
+/* open state */
 .mobile-menu.show{
-  right:0;
+  right: 0;
 }
+
+/* ================= MENU LINKS ================= */
 .mobile-menu a{
-  color:var(--leaf);
-  font-weight:600;
-  text-decoration:none;
-  font-size:1.2rem;
-  transition:transform .2s ease, opacity .3s ease;
+  color: var(--leaf);
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-decoration: none;
+
+  padding: 14px 18px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.25);
+
+  letter-spacing: .4px;
+
+  transition:
+    background .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease,
+    opacity .3s ease;
 }
+
 .mobile-menu a:hover{
-  transform:translateX(10px);
-  opacity:.8;
+  background: rgba(255,255,255,0.45);
+  transform: translateX(6px);
+  opacity: 1;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
 }
+
+/* ================= CLOSE BUTTON ================= */
 .mobile-menu .close-btn{
-  position:absolute;
-  top:18px;
-  right:20px;
-  font-size:1.6rem;
-  font-weight:700;
-  cursor:pointer;
-  color:var(--leaf);
+  position: absolute;
+  top: 18px;
+  right: 22px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  color: var(--leaf);
+
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    transform .3s ease,
+    background .3s ease;
 }
+
+.mobile-menu .close-btn:hover{
+  background: rgba(255,255,255,0.6);
+  transform: rotate(90deg) scale(1.05);
+}
+
 
 /* HERO */
 .hero-section{
