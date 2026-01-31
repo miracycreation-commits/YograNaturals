@@ -10,20 +10,33 @@
   font-family: "Inter", sans-serif;
 }
 
-body {
-  color: rgb(0, 0, 0);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
 
-  padding: 0;
-  padding-top: 140px; /* only for navbar */
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.45)
+    ),
+    url("../images/pdct bg main.png");
 
-
-  background: linear-gradient(to bottom right, rgba(195, 232, 9, 0.85), rgba(4,23,18,0.85));
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
-
 }
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  body::before {
+    position: absolute;
+    background-position: center top;
+  }
+}
+
 
 .paragraph {
   display: flex;
