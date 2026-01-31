@@ -265,12 +265,12 @@ const LEAF_COUNT = isMobile ? 20 : 35;
   }
 
   // ⛈️ LIGHTNING
-  let lightningAlpha = 0;
-  function triggerLightning() {
-    if (season === 'monsoon' && Math.random() < 0.01) {
-      lightningAlpha = 1;
-    }
-  }
+  //let lightningAlpha = 0;
+  //function triggerLightning() {
+   // if (season === 'monsoon' && Math.random() < 0.01) {
+     // lightningAlpha = 1;
+    //}
+ // }
 
   let rain = [];
   let leaves = [];
@@ -356,15 +356,15 @@ const LEAF_COUNT = isMobile ? 20 : 35;
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    triggerLightning();
+   // triggerLightning();
 
     if (season === 'monsoon') {
       rain.forEach(r => { r.update(); r.draw(); });
-      if (lightningAlpha > 0) {
-        ctx.fillStyle = `rgba(255,255,255,${lightningAlpha})`;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        lightningAlpha -= 0.05;
-      }
+     // if (lightningAlpha > 0) {
+      //  ctx.fillStyle = `rgba(255,255,255,${lightningAlpha})`;
+      //  ctx.fillRect(0, 0, canvas.width, canvas.height);
+       // lightningAlpha -= 0.05;
+     // }
     } else {
       leaves.forEach(l => { l.update(); l.draw(); });
     }
