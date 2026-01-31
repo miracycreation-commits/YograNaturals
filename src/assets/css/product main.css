@@ -11,13 +11,13 @@
 }
 
 body {
-  color: white;
+  color: rgb(0, 0, 0);
 
   padding: 0;
   padding-top: 140px; /* only for navbar */
 
 
-  background: linear-gradient(to bottom right, rgba(47,53,17,0.85), rgba(4,23,18,0.85));
+  background: linear-gradient(to bottom right, rgba(195, 232, 9, 0.85), rgba(4,23,18,0.85));
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

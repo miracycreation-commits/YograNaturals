@@ -235,3 +235,45 @@ window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }
 });
+
+// ================== PRODUCT QUANTITY + WHATSAPP ==================
+document.querySelectorAll('.fragrance-card').forEach(card => {
+
+  const minus = card.querySelector('.minus');
+  const plus = card.querySelector('.plus');
+  const qtyText = card.querySelector('.qtyValue');
+  const shopBtn = card.querySelector('.shopNow');
+
+  if (!minus || !plus || !qtyText || !shopBtn) return;
+
+  let qty = 1;
+
+  plus.addEventListener('click', () => {
+    qty++;
+    qtyText.textContent = qty;
+  });
+
+  minus.addEventListener('click', () => {
+    if (qty > 1) {
+      qty--;
+      qtyText.textContent = qty;
+    }
+  });
+
+  shopBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    const product = shopBtn.dataset.product;
+    const phone = shopBtn.dataset.phone;
+
+    const message =
+      `Hello, I want to buy:\n\n` +
+      `🧴 Product: ${product}\n` +
+      `📦 Quantity: ${qty}`;
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  });
+
+});
+

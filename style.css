@@ -103,7 +103,7 @@ html, body {
 
 :root{
   --leaf:#375342;
-  --beige:#D6B287;
+  --beige:rgb(182, 141, 90);
   --beige-dark:#C5A177;
   --ivory:#FFF9F3;
   --muted:#6D6A52;
