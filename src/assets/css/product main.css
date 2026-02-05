@@ -153,29 +153,41 @@ header p {
 }
 
 /* ====== IMAGE ====== */
+
 .imageWrap {
+  aspect-ratio: 1/1; /* Makes image area square */
   width: 100%;
-  overflow: hidden;              /* ensures clean curved clipping */
-  border-radius: 16px;           /* 👈 visible curve on all 4 sides */
+  max-width: 320px; /* Optional: limits size on desktop */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;                    /* 👈 remove padding so image touches edges */
+  padding: 0;
 }
+
 
 .imageWrap img {
   width: 100%;
   height: 100%;
-  max-height: 230px;
-  object-fit: cover;             /* 👈 fills nicely, keeps proportions */
-  border-radius: 16px;           /* 👈 curve on the image itself */
+  object-fit: cover;
+  border-radius: 16px;
   transition: transform 0.6s ease;
+  display: block;
 }
 
 /* zoom effect for image */
 .fragrance-card:hover .imageWrap img {
   transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+  .imageWrap {
+    max-width: 90vw;
+    aspect-ratio: 1/1;
+  }
 }
 
 /* ====== CONTENT ====== */
