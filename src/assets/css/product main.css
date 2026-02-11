@@ -1,3 +1,9 @@
+/* Hide only price and ml (badge) sections for solid perfume cards, keep rating visible */
+.fragrance-card .price,
+.fragrance-card .old,
+.fragrance-card .badge {
+  display: none !important;
+}
 
 /* ==============================
    YOGRA NATURALS — SOLID PERFUMES
