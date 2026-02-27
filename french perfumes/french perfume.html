@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yogra Naturals — Solid Perfumes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/assets/css/product main.css" />
+</head>
+
+<body>
+  <!-- ================== HEADER & NAVBAR ================== -->
+  <header class="navbar" id="navbar">
+    <nav aria-label="Primary">
+      <!-- Left side logo and text -->
+      <div class="nav-left">
+        <img src="../kikku.png" alt="Yogra Logo" class="nav-logo">
+        <span class="nav-text">Yogra Naturals</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="menu" id="desktopMenu">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#products">Collections</a>
+        <a href="../PrivacyPolicy/privacy-policy.html">PrivacyPolicy</a>
+        <a href="#footer-leaves">Contact</a>
+      </div>
+
+      <!-- Hamburger Icon (visible on mobile) -->
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================== MOBILE MENU (RIGHT SLIDE) ================== -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <!-- Close Button -->
+    <div class="close-btn" id="closeMenu" aria-label="Close menu">&times;</div>
+
+    <!-- Menu Links -->
+    <a href="../index.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#products">Collections</a>
+    <a href="../PrivacyPolicy/privacy-policy.html">PrivacyPolicy</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ================== OVERLAY (BACKGROUND DIM) ================== -->
+  <div class="menu-overlay" id="overlay"></div>
+
+
+  <section class="fragrance-grid">
+
+
+    <!-- 1 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Amour Éternel.jpg.jpeg" alt="Amour Éternel"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Amour Éternel</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">A timeless romantic blend of rose, jasmine, and soft musk for everlasting love.</p>
+        <div class="specs"><div class="spec">Aroma: Floral Musk</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Amour Éternel" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Belle Essence.jpg.jpeg" alt="Belle Essence"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Belle Essence</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Elegant notes of peony and white musk for a truly beautiful essence.</p>
+        <div class="specs"><div class="spec">Aroma: Floral</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Belle Essence" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Cœur de Fleur.jpg.jpeg" alt="Cœur de Fleur"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Cœur de Fleur</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Heart of flowers: a lush bouquet of gardenia, tuberose, and lily.</p>
+        <div class="specs"><div class="spec">Aroma: White Floral</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Cœur de Fleur" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Douce Nuit.jpg.jpeg" alt="Douce Nuit"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Douce Nuit</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★☆</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">A gentle night: lavender, vanilla, and a hint of sandalwood for sweet dreams.</p>
+        <div class="specs"><div class="spec">Aroma: Lavender Vanilla</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Douce Nuit" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Fleur d’Amour.jpg.jpeg" alt="Fleur d’Amour"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Fleur d’Amour</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Flower of love: rose, magnolia, and a touch of citrus for romance.</p>
+        <div class="specs"><div class="spec">Aroma: Floral Citrus</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Fleur d’Amour" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 6 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Fleur Royale.jpg.jpeg" alt="Fleur Royale"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Fleur Royale</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">A royal bouquet: iris, violet, and a whisper of amber for regal elegance.</p>
+        <div class="specs"><div class="spec">Aroma: Powdery Floral</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Fleur Royale" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 7 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Jardin de Parfum.jpg.jpeg" alt="Jardin de Parfum"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Jardin de Parfum</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">A garden of fragrance: green notes, fresh herbs, and blooming flowers.</p>
+        <div class="specs"><div class="spec">Aroma: Green Floral</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Jardin de Parfum" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 8 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="L’Essence Pure.jpg.jpeg" alt="L’Essence Pure"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>L’Essence Pure</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Pure essence: clean citrus, white tea, and a soft musky base.</p>
+        <div class="specs"><div class="spec">Aroma: Citrus Musk</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="L’Essence Pure" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 9 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="L’Interdit Noir.jpg.jpeg" alt="L’Interdit Noir"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>L’Interdit Noir</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★☆</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Forbidden night: blackcurrant, patchouli, and smoky woods for intrigue.</p>
+        <div class="specs"><div class="spec">Aroma: Fruity Woody</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="L’Interdit Noir" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 10 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Maison d’Or.jpg.jpeg" alt="Maison d’Or"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Maison d’Or</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Golden house: amber, honey, and a touch of saffron for luxury.</p>
+        <div class="specs"><div class="spec">Aroma: Amber Honey</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Maison d’Or" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 11 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Nuit Mystique.jpg.jpeg" alt="Nuit Mystique"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Nuit Mystique</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Mysterious night: incense, myrrh, and dark woods for depth and allure.</p>
+        <div class="specs"><div class="spec">Aroma: Incense Woody</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Nuit Mystique" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 12 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Obscur.jpg.jpeg" alt="Obscur"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Obscur</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★☆</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Dark and enigmatic: oud, leather, and a hint of spice for boldness.</p>
+        <div class="specs"><div class="spec">Aroma: Oud Leather</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Obscur" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 13 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Ombre.jpg.jpeg" alt="Ombre"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Ombre</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Shadowy allure: vetiver, cedar, and smoky incense for depth.</p>
+        <div class="specs"><div class="spec">Aroma: Woody Smoky</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Ombre" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 14 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Rêve Rose.jpg.jpeg" alt="Rêve Rose"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Rêve Rose</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Rose dream: damask rose, peony, and a soft powdery finish.</p>
+        <div class="specs"><div class="spec">Aroma: Rose Powdery</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Rêve Rose" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 15 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Secret de Minuit.jpg.jpeg" alt="Secret de Minuit"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Secret de Minuit</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Midnight secret: jasmine, sandalwood, and a mysterious musky base.</p>
+        <div class="specs"><div class="spec">Aroma: Jasmine Musk</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Secret de Minuit" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 16 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Tendre.jpg.jpeg" alt="Tendre"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Tendre</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★☆</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Tender embrace: freesia, pear, and a creamy sandalwood base.</p>
+        <div class="specs"><div class="spec">Aroma: Fruity Floral</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Tendre" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 17 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Velours.jpg.jpeg" alt="Velours"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Velours</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Velvet touch: plum, vanilla, and a soft suede finish for luxury.</p>
+        <div class="specs"><div class="spec">Aroma: Fruity Suede</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Velours" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- 18 -->
+    <div class="fragrance-card">
+      <div class="imageWrap"><img src="Élégance Noire.jpg.jpeg" alt="Élégance Noire"></div>
+      <div class="info">
+        <div class="brand">YOGRA • French Perfume</div>
+        <h3>Élégance Noire</h3>
+        <div class="priceRow"><div class="price">₹1,299</div><div class="old">₹1,599</div><div class="rating">★★★★★</div></div>
+        <div class="badge">50ml • Eau de Parfum</div>
+        <p class="desc">Black elegance: black orchid, tonka bean, and a sensual woody base.</p>
+        <div class="specs"><div class="spec">Aroma: Orchid Woody</div><div class="spec">Origin: France</div></div>
+        <div class="buyControls">
+          <div class="qty">
+            <button class="minus">-</button>
+            <span class="qtyValue">1</span>
+            <button class="plus">+</button>
+          </div>
+          <a class="shopNow" data-product="Élégance Noire" data-phone="919048156879" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+
+
+  </section>
+  </section> <!-- 👈 closes fragrance-grid section properly -->
+
+  <!-- FOOTER -->
+  <!-- FOOTER -->
+
+<footer class="footer">
+  <canvas id="footer-leaves"></canvas>
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="PrivacyPolicy/privacy-policy.html">Privacy Policy</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>Email: <a href="mailto:support@yogranaturals.com">support@yogranaturals.com</a></p>
+      <p>Phone: <a href="tel:+911234567890">+91 1234 567 890</a></p>
+
+      <div class="footer-social">
+        <a href="https://www.facebook.com/yogranaturals"><img src="../svg files/facebook.svg" alt="Facebook"></a>
+        <a href="https://twitter.com/yogranaturals"><img src="../svg files/twitter.svg" alt="Twitter"></a>
+        <a href="https://www.instagram.com/yogranaturals"><img src="../svg files/instagram.svg" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/company/yogranaturals"><img src="../svg files/linkedin.svg" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Newsletter</h3>
+      <form id="newsletter-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="success-msg" id="newsletterMsg">Thank you for subscribing!</p>
+    </div>
+
+  </div>
+
+  <div class="footer-logo">
+  
+    <h2>Yogra Naturals</h2>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MyracyCreation. All Rights Reserved.</p>
+  </div>
+  <!-- Season Toggle -->
+<div class="season-toggle">
+  <button id="seasonBtn">🌧️ Monsoon</button>
+</div>
+
+</footer>
+  <!-- External JS -->
+  <script src="../src/js/products main.js"></script>
+</body>
+
+</html>
+
