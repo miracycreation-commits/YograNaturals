@@ -522,7 +522,7 @@ main{position:relative;z-index:5}
 }
 
 /* Sustainability */
-.sustain{margin-top:30px;padding:60px;background-image: url('sustain-bg.jpg');background-size:cover;background-position:center;border-radius:12px;color:#fff;position:relative;overflow:hidden}
+.sustain{margin-top:30px;padding:60px;background-image: url('wyyuuu.jpeg');background-size:cover;background-position:center;border-radius:12px;color:#fff;position:relative;overflow:hidden}
 .sustain .overlay{position:absolute;inset:0;background:rgba(21,34,21,0.45)}
 .sustain .content{position:relative;z-index:3;max-width:900px}
 .sustain h2{color:var(--beige);margin-bottom:12px}
@@ -1257,4 +1257,21 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
     width: 90px;
     height: 40px;
   }
+}
+
+
+/*checking*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+* {
+  box-sizing: border-box;
 }
