@@ -1259,46 +1259,40 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   }
 }
 
+/* ================= REMOVE TOP & BOTTOM SCROLL GAP ================= */
 
-/* ================= SUPER STABLE MOBILE SCROLL FIX ================= */
+/* 1️⃣ Remove default spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;   /* Stops rubber band bounce */
+}
 
+/* 2️⃣ Fix viewport height issue */
+.hero-section {
+  min-height: 100svh;   /* modern stable mobile viewport */
+}
+
+/* 3️⃣ Prevent stretch gap */
+body {
+  min-height: 100%;
+  background-attachment: scroll !important;
+}
+
+/* 4️⃣ Prevent scroll stretching on mobile */
 @media (max-width: 768px) {
-
-  /* 1️⃣ Remove scroll bounce effect */
   html, body {
-    overscroll-behavior: none;
-  }
-
-  /* 2️⃣ Force normal scrolling */
-  body {
+    height: 100%;
     overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
-  /* 3️⃣ Remove background repaint lag */
-  body {
-    background-attachment: scroll !important;
-    background-size: cover;
-    background-position: center top;
-  }
-
-  /* 4️⃣ Prevent transform repaint issues */
-  * {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  /* 5️⃣ Disable heavy hover transforms on mobile */
-  .card:hover,
-  .about-image img:hover,
-  .faq-item:hover {
-    transform: none !important;
-  }
-
-  /* 6️⃣ Fix 100vh jump issue */
   .hero-section {
-    min-height: auto;
+    min-height: 100svh;
   }
+}
 
+/* 5️⃣ Extra protection for full page */
+main {
+  overflow: hidden;
 }
