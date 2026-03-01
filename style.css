@@ -1260,18 +1260,45 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
 }
 
 
-/*checking*/
+/* ================= SUPER STABLE MOBILE SCROLL FIX ================= */
 
-html {
-  scroll-behavior: smooth;
-}
+@media (max-width: 768px) {
 
-body {
-  margin: 0;
-  overflow-x: hidden;
-  min-height: 100dvh;
-}
+  /* 1️⃣ Remove scroll bounce effect */
+  html, body {
+    overscroll-behavior: none;
+  }
 
-* {
-  box-sizing: border-box;
+  /* 2️⃣ Force normal scrolling */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 3️⃣ Remove background repaint lag */
+  body {
+    background-attachment: scroll !important;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  /* 4️⃣ Prevent transform repaint issues */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* 5️⃣ Disable heavy hover transforms on mobile */
+  .card:hover,
+  .about-image img:hover,
+  .faq-item:hover {
+    transform: none !important;
+  }
+
+  /* 6️⃣ Fix 100vh jump issue */
+  .hero-section {
+    min-height: auto;
+  }
+
 }
