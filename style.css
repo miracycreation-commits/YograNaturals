@@ -1260,28 +1260,18 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
 }
 
 /* ================= REMOVE MOBILE BOTTOM GREY GAP ================= */
+/* ===== SIMPLE STABLE FIX (FAST VERSION) ===== */
 
-/* 1️⃣ Make html background same as body */
-html {
-  background: #375342; /* use your hero dominant color */
-}
-
-/* 2️⃣ Force full height */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 
-/* 3️⃣ Remove viewport jump issue */
-.hero-section {
-  min-height: 100dvh;  /* BEST modern fix */
-}
-
-/* 4️⃣ Prevent stretch bounce */
 body {
-  min-height: 100dvh;
-  background-attachment: scroll !important;
+  padding-top: 72px; /* navbar height */
+}
+
+.hero-section {
+  min-height: calc(100vh - 72px);
 }
