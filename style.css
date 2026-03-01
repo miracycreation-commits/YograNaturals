@@ -117,14 +117,26 @@ body{
   font-family: "Poppins", sans-serif;
   background-image: url('gem.png');
   background-size: cover;
-  background-attachment: scroll;
+
   background-position: center;
   color:var(--muted);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  min-height: 100vh; /* Add this */
+  
+}
+/* Desktop fixed background */
+@media (min-width: 769px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
+/* Mobile smooth scroll */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
 
 /* NAVBAR */
 .nav-left {
