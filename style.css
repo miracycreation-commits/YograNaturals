@@ -1259,40 +1259,29 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   }
 }
 
-/* ================= REMOVE TOP & BOTTOM SCROLL GAP ================= */
+/* ================= REMOVE MOBILE BOTTOM GREY GAP ================= */
 
-/* 1️⃣ Remove default spacing */
+/* 1️⃣ Make html background same as body */
+html {
+  background: #375342; /* use your hero dominant color */
+}
+
+/* 2️⃣ Force full height */
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
   overflow-x: hidden;
-  overscroll-behavior: none;   /* Stops rubber band bounce */
+  overscroll-behavior-y: none;
 }
 
-/* 2️⃣ Fix viewport height issue */
+/* 3️⃣ Remove viewport jump issue */
 .hero-section {
-  min-height: 100svh;   /* modern stable mobile viewport */
+  min-height: 100dvh;  /* BEST modern fix */
 }
 
-/* 3️⃣ Prevent stretch gap */
+/* 4️⃣ Prevent stretch bounce */
 body {
-  min-height: 100%;
+  min-height: 100dvh;
   background-attachment: scroll !important;
-}
-
-/* 4️⃣ Prevent scroll stretching on mobile */
-@media (max-width: 768px) {
-  html, body {
-    height: 100%;
-    overflow-x: hidden;
-  }
-
-  .hero-section {
-    min-height: 100svh;
-  }
-}
-
-/* 5️⃣ Extra protection for full page */
-main {
-  overflow: hidden;
 }
