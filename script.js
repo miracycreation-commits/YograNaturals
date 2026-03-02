@@ -172,15 +172,28 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 // ================== NEWSLETTER ==================
-const form = document.getElementById('newsletter-form');
-const successMsg = document.querySelector('.success-msg');
-
-if (form && successMsg) {
+document.querySelectorAll('.footer-newsletter .newsletter-form').forEach(form => {
+  const msg = form.parentElement.querySelector('.success-msg');
   form.addEventListener('submit', e => {
     e.preventDefault();
-    successMsg.style.display = 'block';
-    form.reset();
-    setTimeout(() => successMsg.style.display = 'none', 4000);
+    if (msg) {
+      msg.style.display = 'block';
+      form.reset();
+      setTimeout(() => msg.style.display = 'none', 4000);
+    }
+  });
+});
+
+// CTA Subscribe for Updates (top section)
+const ctaForm = document.getElementById('cta-subscribe-form');
+const ctaMsg = document.getElementById('ctaSubscribeMsg');
+if (ctaForm && ctaMsg) {
+  ctaForm.addEventListener('submit', e => {
+    e.preventDefault();
+    // Send email to yogranaturals (simulate, as real email requires backend)
+    ctaMsg.style.display = 'block';
+    ctaForm.reset();
+    setTimeout(() => ctaMsg.style.display = 'none', 4000);
   });
 }
 

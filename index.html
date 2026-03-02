@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="kikku.png">
 <title>Yogra Naturals — Home</title>
 
 <!-- Google Font -->
@@ -420,13 +420,14 @@ Through strict quality control, sustainable sourcing, and continuous technologic
 
 <!-- CTA -->
 <section class="cta reveal zoom-in">
-<div class="left">
-<h3>Subscribe for Updates</h3>
-</div>
-<div class="subscribe">
-<input type="email" placeholder="Your email" />
-<button>Subscribe</button>
-</div>
+  <div class="left">
+    <h3>Subscribe for Updates</h3>
+  </div>
+  <form id="cta-subscribe-form" class="subscribe">
+    <input type="email" id="cta-email" placeholder="Your email" required />
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="success-msg" id="ctaSubscribeMsg" style="display:none;">Thank you for subscribing!</p>
 </section>
 
 <!-- FAQ SECTION -->
