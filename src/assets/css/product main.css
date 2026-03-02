@@ -1,3 +1,40 @@
+/* === Collection Paragraph Styling === */
+.paragraph {
+  margin: 32px auto 32px auto;
+  padding: 16px 24px;
+  max-width: 600px;
+  font-size: 1.35rem;
+  text-align: center;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  letter-spacing: 0.01em;
+}
+
+/* === Card Spacing === */
+.collections .grid {
+  gap: 36px 28px;
+}
+.collections .card {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .paragraph {
+    font-size: 1.05rem;
+    padding: 12px 8px;
+    margin: 20px 8px 20px 8px;
+    max-width: 98vw;
+  }
+  .collections .grid {
+    gap: 24px 8px;
+  }
+  .collections .card {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+}
 /* Hide only price and ml (badge) sections for solid perfume cards, keep rating visible */
 .fragrance-card .price,
 .fragrance-card .old,
