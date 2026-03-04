@@ -14,9 +14,8 @@ if (form && successMsg) {
 // ================== CANVAS ANIMATION (LEAVES, SPARKLES, POLLEN) ==================
 // ================== FOOTER CANVAS ==================
 const canvas = document.getElementById('footer-leaves');
-const seasonBtn = document.getElementById('seasonBtn');
 
-if (canvas && seasonBtn) {
+if (canvas) {
 
   const ctx = canvas.getContext('2d');
 
@@ -44,15 +43,7 @@ const LEAF_COUNT = isMobile ? 20 : 35;
   const hour = new Date().getHours();
   const isNight = hour >= 18 || hour <= 6;
 
-  // 🎚️ SEASON STATE
-  let season = 'monsoon';
-  seasonBtn.textContent = '🌧️ Monsoon';
-
-  seasonBtn.addEventListener('click', () => {
-    season = season === 'monsoon' ? 'autumn' : 'monsoon';
-    seasonBtn.textContent = season === 'monsoon' ? '🌧️ Monsoon' : '🍂 Autumn';
-    init();
-  });
+  // 🎚️ SEASON STATE removed (always show both rain & leaves)
 
   // 🍃 AUTUMN COLORS
   const leafColors = isNight
@@ -164,11 +155,8 @@ const LEAF_COUNT = isMobile ? 20 : 35;
   function init() {
     rain = [];
     leaves = [];
-    if (season === 'monsoon') {
-      for (let i = 0; i < 90; i++) rain.push(new RainDrop());
-    } else {
-      for (let i = 0; i < 35; i++) leaves.push(new Leaf());
-    }
+    for (let i = 0; i < RAIN_COUNT; i++) rain.push(new RainDrop());
+    for (let i = 0; i < LEAF_COUNT; i++) leaves.push(new Leaf());
   }
   init();
 
@@ -176,16 +164,8 @@ const LEAF_COUNT = isMobile ? 20 : 35;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //triggerLightning();
 
-    if (season === 'monsoon') {
-      rain.forEach(r => { r.update(); r.draw(); });
-     // if (lightningAlpha > 0) {
-       // ctx.fillStyle = `rgba(255,255,255,${lightningAlpha})`;
-        //ctx.fillRect(0, 0, canvas.width, canvas.height);
-        //lightningAlpha -= 0.05;
-      //}
-    } else {
-      leaves.forEach(l => { l.update(); l.draw(); });
-    }
+    rain.forEach(r => { r.update(); r.draw(); });
+    leaves.forEach(l => { l.update(); l.draw(); });
     requestAnimationFrame(animate);
   }
   animate();
