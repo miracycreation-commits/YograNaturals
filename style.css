@@ -255,7 +255,7 @@ body::before {
   background: linear-gradient(
     160deg,
     rgba(167, 175, 159, 0.96),
-    rgba(140, 148, 132, 0.96)
+    rgba(17, 18, 16, 0.96)
   );
 
   backdrop-filter: blur(14px);
@@ -287,7 +287,7 @@ body::before {
 
 /* ================= MENU LINKS ================= */
 .mobile-menu a{
-  color: var(--leaf);
+  color: black;
   font-weight: 600;
   font-size: 1.15rem;
   text-decoration: none;
