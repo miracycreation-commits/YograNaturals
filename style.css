@@ -409,6 +409,13 @@ body::before {
 
 }
 
+.leaf-background{
+  pointer-events: none;
+}
+.content-box{
+  position: relative;
+  z-index: 2;
+}
 
 /* MAIN SECTIONS */
 main{position:relative;z-index:5}
