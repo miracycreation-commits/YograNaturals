@@ -371,7 +371,7 @@ body::before {
 }
 .logo-title{display:flex;align-items:center;gap:16px;margin-bottom:12px}
 .logo-title img{ width: 100%;
-  max-width: 260px;
+  max-width: 250px;
   height: auto;
   max-height: 260px;
   object-fit: contain;
@@ -392,7 +392,7 @@ body::before {
 
   /* Reduce logo image size */
   .logo-title img {
-    max-width: 160px;   /* smaller than 260px */
+    max-width: 240px;   /* smaller than 260px */
   }
 
   /* Stack image and text vertically */
