@@ -1000,6 +1000,16 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   font-size: 0.95rem;
 }
 
+.footer-contact a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #a3d18c;
+}
+
 /* Social Icons */
 .footer-social {
   display: flex;
@@ -1381,3 +1391,6 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   }
 
 }
+
+
+

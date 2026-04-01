@@ -43,15 +43,12 @@
 
   <!-- ================== MOBILE MENU (RIGHT SLIDE) ================== -->
   <nav class="mobile-menu" id="mobileMenu">
-    <!-- Close Button -->
-    <div class="close-btn" id="closeMenu" aria-label="Close menu">&times;</div>
-
-    <!-- Menu Links -->
+    <div class="close-btn" id="closeMenu">&times;</div>
     <a href="../index.html#footer-logo">Home</a>
     <a href="../index.html#about">About</a>
-    <a href="../index.html#products">Products</a>
-    <a href="../PrivacyPolicy/privacy-policy.html">Privacy Policy</a>
-    <a href="../index.html#footer-contact">Contact</a>
+    <a href="../index.html#products">Collections</a>
+    <a href="../PrivacyPolicy/privacy-policy.html">PrivacyPolicy</a>
+    <a href="../PrivacyPolicy/privacy-policy.html#8. Contact Us">Contact</a>
   </nav>
 
   <!-- ================== OVERLAY (BACKGROUND DIM) ================== -->
@@ -375,7 +372,7 @@
       <ul>
         <li><a href="../index.html#footer-logo">Home</a></li>
         <li><a href="../index.html#products">Products</a></li>
-        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#about">About Us</a></li>
         <li><a href="../index.html#footer-contact">Contact</a></li>
         <li><a href="../PrivacyPolicy/privacy-policy.html">Privacy Policy</a></li>
        
@@ -383,7 +380,7 @@
     </div>
 
     <!-- Contact -->
-    <div class="footer-contact">
+    <div class="footer-contact" id="footer-contact">
       <h3>Contact Us</h3>
       <p>Email: <a href="mailto:support@yogranaturals.com">support@yogranaturals.com</a></p>
       <p>WhatsApp: <a href="https://wa.me/917994900191">+91 7994 900 191</a></p>
@@ -399,16 +396,16 @@
     <!-- Newsletter -->
     <div class="footer-newsletter">
       <h3>Newsletter</h3>
-      <form class="newsletter-form">
+      <form id="newsletter-form">
         <input type="email" placeholder="Enter your email" required>
         <button type="submit">Subscribe</button>
       </form>
-      <p class="success-msg" style="display:none;">Thank you for subscribing!</p>
+      <p class="success-msg" id="newsletterMsg">Thank you for subscribing!</p>
     </div>
 
   </div>
 
-  <div class="footer-logo">
+  <div class="footer-logo" id="footer-logo">
   
     <h2>Yogra Naturals</h2>
   </div>
@@ -416,6 +413,10 @@
   <div class="footer-bottom">
     <p>© 2026 MyracyCreation. All Rights Reserved.</p>
   </div>
+  <!-- Season Toggle -->
+<div class="season-toggle">
+  <button id="seasonBtn">🌧️ Monsoon</button>
+</div>
 
 </footer>
   <!-- External JS -->
