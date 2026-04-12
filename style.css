@@ -1015,6 +1015,7 @@ footer{padding:30px 8%;color:#fff;background:transparent;opacity:.9}
   display: flex;
   gap: 15px;
   margin-top: 12px;
+  justify-content: center;
 }
 
 .footer-social a {
