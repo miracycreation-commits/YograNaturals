@@ -1,1 +1,1 @@
-# YograNaturals
+# YograNatural
